@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/components.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageWeb extends StatefulWidget {
   const LandingPageWeb({super.key});
@@ -9,13 +11,65 @@ class LandingPageWeb extends StatefulWidget {
 }
 
 class _LandingPageWebState extends State<LandingPageWeb> {
+ Widget iconButton(String imagepath, String url) {
+   return IconButton(
+      icon: SvgPicture.asset(
+        imagepath,
+        colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+        width: 35,
+      ),
+      onPressed: () async {
+        await launchUrl(Uri.parse(url));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    var screenHeight = MediaQuery.of(context).size.height;
-    var screenWidth = MediaQuery.of(context).size.width;
+    final size = MediaQuery.sizeOf(context); // Accesses the screen/device info
+    var screenHeight =
+        size.height; //context -- The location of your widget in the tree
+    var screenWidth = size.width;
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              backgroundColor: Colors.tealAccent,
+              radius: 72,
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 70,
+                backgroundImage: AssetImage("assets/IMG_20220115_045240.jpg"),
+              ),
+            ),
+            SizedBox(height: 15),
+            SansBold("Arun Kumar", 20),
+            SizedBox(height: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                iconButton(
+                  "assets/instagram.svg",
+                  "https://www.instagram.com/arunburla26",
+                ),
+                 iconButton(
+                  "assets/twitter.svg",
+                  "https://www.x.com",
+                ),
+                 iconButton(
+                  "assets/github.svg",
+                  "https://www.github.com/arunburla01",
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
+        backgroundColor: Colors.white,
         iconTheme: IconThemeData(
           color: Colors.black,
         ), // by using icontheme , entire icons in the appbar looks with same instructions
@@ -79,19 +133,20 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                       ],
                     ),
                     SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Icon(Icons.location_city),
-                        SizedBox(width: 20),
-                        Sans("Ongole, AP", 15),
-                      ],
-                    ),
-                    SizedBox(height: 10),
+
                     Row(
                       children: [
                         Icon(Icons.phone),
                         SizedBox(width: 20),
                         Sans("8985088844", 15),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Icon(Icons.location_city),
+                        SizedBox(width: 20),
+                        Sans("Ongole, AP", 15),
                       ],
                     ),
                   ],
@@ -120,7 +175,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset("assets/web.jpg", height: screenHeight / 1.7),
+                Image.asset("assets/web.jpg", height: screenWidth / 1.9),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -199,11 +254,19 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   //Row --> Card
                   children: [
-                    
-                    AnimatedCard(image:"assets/web.png" , title: "Web development"),
-                    AnimatedCard(image: "assets/app.png", title: "Android development"),
-                    AnimatedCard(image:"assets/firebase.png" , title: "Backend Development")
-
+                    AnimatedCard(
+                      image: "assets/web.png",
+                      title: "Web development",
+                    ),
+                    AnimatedCard(
+                      image: "assets/app.png",
+                      title: "Android development",
+                      reverse: true,
+                    ),
+                    AnimatedCard(
+                      image: "assets/firebase.png",
+                      title: "Backend Development",
+                    ),
                   ],
                 ),
               ],
@@ -277,7 +340,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                 ),
                 TextForm(
                   heading: "Message",
-                  width: screenWidth / 1.3,
+                  width: screenWidth / 1.5,
                   hinttext: "please enter your message",
                   maxlines: 5,
                 ),
@@ -285,12 +348,14 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   onPressed: () {},
                   height: 60,
                   minWidth: 200,
-                  shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(10) ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   elevation: 20,
                   color: Colors.tealAccent,
-                  child:SansBold("Submit", 20),
+                  child: SansBold("Submit", 20),
                 ),
-                SizedBox(height: 20.0,)
+                SizedBox(height: 20.0),
               ],
             ),
           ),
