@@ -11,8 +11,8 @@ class LandingPageWeb extends StatefulWidget {
 }
 
 class _LandingPageWebState extends State<LandingPageWeb> {
- Widget iconButton(String imagepath, String url) {
-   return IconButton(
+  Widget iconButton(String imagepath, String url) {
+    return IconButton(
       icon: SvgPicture.asset(
         imagepath,
         colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
@@ -55,11 +55,8 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   "assets/instagram.svg",
                   "https://www.instagram.com/arunburla26",
                 ),
-                 iconButton(
-                  "assets/twitter.svg",
-                  "https://www.x.com",
-                ),
-                 iconButton(
+                iconButton("assets/twitter.svg", "https://www.x.com"),
+                iconButton(
                   "assets/github.svg",
                   "https://www.github.com/arunburla01",
                 ),
@@ -286,15 +283,15 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     Column(
                       children: [
                         TextForm(
-                          heading: "First Name",
-                          width: 350,
+                          text: "First Name",
+                          containerwidth: 350,
                           hinttext: "please enter your Name",
                         ),
                         SizedBox(height: 15),
 
                         TextForm(
-                          heading: "Email",
-                          width: 350,
+                          text: "Email",
+                          containerwidth: 350,
                           hinttext: "please enter your email",
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -314,15 +311,15 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     Column(
                       children: [
                         TextForm(
-                          heading: "Last Name",
-                          width: 350,
+                          text: "Last Name",
+                          containerwidth: 350,
                           hinttext: "please enter your Lastname",
                         ),
                         SizedBox(height: 15),
 
                         TextForm(
-                          heading: "Phone",
-                          width: 350,
+                          text: "Phone",
+                          containerwidth: 350,
                           hinttext: "please enter your phone number",
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -339,8 +336,8 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   ],
                 ),
                 TextForm(
-                  heading: "Message",
-                  width: screenWidth / 1.5,
+                  text: "Message",
+                  containerwidth: screenWidth / 1.5,
                   hinttext: "please enter your message",
                   maxlines: 5,
                 ),

@@ -13,40 +13,44 @@ class _TabswebState extends State<Tabsweb> {
   bool isentered = false;
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      // MouseRegion --> AnimatedDefaultTextStyle
-      //MouseRegion widget detects the mouse position when the curser hovers over it
-      onEnter: (event) {
-        // onenter funtion helps to detect the when hovered over on widget
-        setState(() {
-          isentered = true;
-        });
-        // print("entered");
-      },
-      onExit: (event) {
-        //onexit function helps to detect when the curser is away from widget area
-        setState(() {
-          isentered = false;
-        });
-        // print("enxited");
-      },
-      child: AnimatedDefaultTextStyle(
-        //AnimatedDefaultTextStyle --> Text
-        //AnimatedDefaultTextstyle(style1,style2)
-        curve: Curves.elasticIn,
-        duration: Duration(milliseconds: 100),
-        style: isentered
-            ? GoogleFonts.roboto(
-                //Googlefonts is external package from pub.dev
-                shadows: [Shadow(color: Colors.black, offset: Offset(0, -7))],
-                color: Colors.transparent,
-                decoration: TextDecoration.underline,
-                decorationThickness: 2,
-                decorationColor: Colors.tealAccent,
-                fontSize: 25,
-              )
-            : GoogleFonts.roboto(color: Colors.black, fontSize: 20),
-        child: Text(widget.title),
+    return GestureDetector(onTap: () {
+      Navigator.of(context).pushNamed("/contact");
+    },
+      child: MouseRegion(
+        // MouseRegion --> AnimatedDefaultTextStyle
+        //MouseRegion widget detects the mouse position when the curser hovers over it
+        onEnter: (event) {
+          // onenter funtion helps to detect the when hovered over on widget
+          setState(() {
+            isentered = true;
+          });
+          // print("entered");
+        },
+        onExit: (event) {
+          //onexit function helps to detect when the curser is away from widget area
+          setState(() {
+            isentered = false;
+          });
+          // print("enxited");
+        },
+        child: AnimatedDefaultTextStyle(
+          //AnimatedDefaultTextStyle --> Text
+          //AnimatedDefaultTextstyle(style1,style2)
+          curve: Curves.elasticIn,
+          duration: Duration(milliseconds: 100),
+          style: isentered
+              ? GoogleFonts.roboto(
+                  //Googlefonts is external package from pub.dev
+                  shadows: [Shadow(color: Colors.black, offset: Offset(0, -7))],
+                  color: Colors.transparent,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2,
+                  decorationColor: Colors.tealAccent,
+                  fontSize: 25,
+                )
+              : GoogleFonts.roboto(color: Colors.black, fontSize: 20),
+          child: Text(widget.title),
+        ),
       ),
     );
   }
@@ -58,15 +62,20 @@ class TabsMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(elevation: 20,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(50)
-    ),
-    height: 50,
-    minWidth: 200,
-    color: Colors.black,
-    onPressed: (){},
-    child: Text(text,style: GoogleFonts.openSans(color: Colors.white,fontSize: 20),),
+    return MaterialButton(
+      
+      elevation: 20,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+      height: 50,
+      minWidth: 200,
+      color: Colors.black,
+      onPressed: () {
+        Navigator.of(context).pushNamed("/contact");
+      },
+      child: Text(
+        text,
+        style: GoogleFonts.openSans(color: Colors.white, fontSize: 20),
+      ),
     );
   }
 }
@@ -103,6 +112,8 @@ class AnimatedCard extends StatefulWidget {
   final String title;
   final BoxFit? fit;
   final bool? reverse;
+  final double? height;
+  final double? width;
 
   const AnimatedCard({
     super.key,
@@ -110,6 +121,8 @@ class AnimatedCard extends StatefulWidget {
     required this.title,
     this.fit,
     this.reverse,
+    this.height,
+    this.width,
   });
 
   @override
@@ -118,10 +131,13 @@ class AnimatedCard extends StatefulWidget {
 
 class _AnimatedCardState extends State<AnimatedCard>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
-    vsync: this,
-    duration: const Duration(seconds: 4),
-  )..repeat(reverse: true); //vsync -- Connects animation to the screen refresh (saves battery + smooth animation)
+  late final AnimationController _controller =
+      AnimationController(
+        vsync: this,
+        duration: const Duration(seconds: 4),
+      )..repeat(
+        reverse: true,
+      ); //vsync -- Connects animation to the screen refresh (saves battery + smooth animation)
   late final Animation<Offset> _animation =
       Tween(
         begin: widget.reverse == true ? const Offset(0, 0.08) : Offset.zero,
@@ -140,6 +156,7 @@ class _AnimatedCardState extends State<AnimatedCard>
     return SlideTransition(
       position: _animation,
       child: Card(
+        color: Colors.white,
         //Card --> column
         elevation: 30,
         shadowColor: Colors.tealAccent,
@@ -151,9 +168,14 @@ class _AnimatedCardState extends State<AnimatedCard>
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(widget.image, height: 200, width: 200,fit: widget.fit,),
+              Image.asset(
+                widget.image,
+                height: widget.height ?? 200,
+                width: widget.width ?? 200,
+                fit: widget.fit,
+              ),
               SizedBox(height: 10),
               Sans(widget.title, 15),
             ],
@@ -165,16 +187,16 @@ class _AnimatedCardState extends State<AnimatedCard>
 }
 
 class TextForm extends StatelessWidget {
-  final String heading;
-  final double? width;
+  final String text;
+  final double? containerwidth;
   final String? hinttext;
   final int? maxlines;
   final String? Function(String?)? validator;
 
   const TextForm({
     super.key,
-    required this.heading,
-    this.width,
+    required this.text,
+    this.containerwidth,
     this.hinttext,
     this.maxlines,
     this.validator,
@@ -186,11 +208,11 @@ class TextForm extends StatelessWidget {
       //Column --> Sans,Sizedbox,Sizedbox
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Sans(heading, 16),
+        Sans(text, 16),
         SizedBox(height: 5),
         SizedBox(
           //SizedBox --> TextformField
-          width: width,
+          width: containerwidth,
 
           child: TextFormField(
             validator: validator,
@@ -212,6 +234,29 @@ class TextForm extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class TealContainer extends StatelessWidget {
+  final String text;
+  const TealContainer({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        border: BoxBorder.all(
+          color: Colors.tealAccent,
+          style: BorderStyle.solid,
+          width: 2,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(7.0),
+        child: Text(text, style: GoogleFonts.openSans(fontSize: 15)),
+      ),
     );
   }
 }
