@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/components.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:portfolio/mobile/components/mobile_components.dart';
 
 class LandingPagemobile extends StatefulWidget {
   const LandingPagemobile({super.key});
@@ -22,67 +21,7 @@ class _LandingPagemobileState extends State<LandingPagemobile> {
         elevation: 10,
         iconTheme: IconThemeData(size: 30, color: Colors.black),
       ),
-      endDrawer: Drawer(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            DrawerHeader(
-              padding: EdgeInsets.only(bottom: 20),
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 2, color: Colors.black),
-                ),
-                child: Image.asset("assets/cropped_circle_image.png"),
-              ),
-            ),
-            TabsMobile(text: "home"),
-            SizedBox(height: 10),
-            TabsMobile(text: "blog"),
-            SizedBox(height: 10),
-            TabsMobile(text: "Projects"),
-            SizedBox(height: 10),
-            TabsMobile(text: "Aboutme"),
-            SizedBox(height: 10),
-            TabsMobile(text: "Contactme"),
-            SizedBox(height: 30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () async => await launchUrl(
-                    Uri.parse("https://www.instagram.com/arunburla26"),
-                  ),
-                  icon: SvgPicture.asset(
-                    "assets/instagram.svg",
-                    // colorFilter: colorfilter,
-                    width: 30,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () async =>
-                      await launchUrl(Uri.parse("https://www.x.com/")),
-                  icon: SvgPicture.asset(
-                    "assets/twitter.svg",
-                    // colorFilter: colorfilter,
-                    width: 30,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () async => await launchUrl(
-                    Uri.parse("https://www.github.com/arunburla01"),
-                  ),
-                  icon: SvgPicture.asset(
-                    "assets/github.svg",
-                    // colorFilter: colorfilter,
-                    width: 30,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      endDrawer: DrawersMobile(),
       body: ListView(
         //Listview --> column
         children: [
@@ -204,28 +143,7 @@ class _LandingPagemobileState extends State<LandingPagemobile> {
                 ],
               ),
               SizedBox(height: 60),
-              Wrap(
-                spacing: 20.0,
-                runSpacing: 20.0,
-                alignment: WrapAlignment.center,
-                children: [
-                  SansBold("Contactme", 35),
-                  TextForm(text: "Firstname",containerwidth: widthDevice/1.4,hinttext: "please tupe your name ",),
-                  TextForm(text: "Lastname",containerwidth: widthDevice / 1.4 ,hinttext: "please type your last name",),
-                  TextForm(text: "Email",containerwidth: widthDevice/1.4,hinttext: "please type your email address",),
-                  TextForm(text: "Phone",containerwidth: widthDevice/1.4,hinttext: "please type your phone number",),
-                  TextForm(text: "Message",containerwidth: widthDevice/1.4,hinttext: "message",maxlines: 10,),
-                  MaterialButton(onPressed: (){},
-                  elevation: 20,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),
-                  height: 20,
-                  minWidth: widthDevice/2.2,
-                  color: Colors.tealAccent,
-                  child: SansBold("Submit", 20),
-                  ),
-                  
-                ],
-              ),
+              ContactFormMobile(),
               SizedBox(height: 60,)
             ],
           ),
@@ -234,3 +152,41 @@ class _LandingPagemobileState extends State<LandingPagemobile> {
     );
   }
 }
+
+class ContactFormMobile extends StatelessWidget {
+  const ContactFormMobile({
+    super.key,
+   
+  });
+
+
+
+  @override
+  Widget build(BuildContext context) {
+     var widthDevice = MediaQuery.of(context).size.width;
+    return Wrap(
+      spacing: 20.0,
+      runSpacing: 20.0,
+      alignment: WrapAlignment.center,
+      children: [
+        SansBold("Contactme", 35),
+        TextForm(text: "Firstname",containerwidth: widthDevice/1.4,hinttext: "please tupe your name ",),
+        TextForm(text: "Lastname",containerwidth: widthDevice / 1.4 ,hinttext: "please type your last name",),
+        TextForm(text: "Email",containerwidth: widthDevice/1.4,hinttext: "please type your email address",),
+        TextForm(text: "Phone",containerwidth: widthDevice/1.4,hinttext: "please type your phone number",),
+        TextForm(text: "Message",containerwidth: widthDevice/1.4,hinttext: "message",maxlines: 10,),
+        MaterialButton(onPressed: (){},
+        elevation: 20,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),
+        height: 20,
+        minWidth: widthDevice/2.2,
+        color: Colors.tealAccent,
+        child: SansBold("Submit", 20),
+        ),
+        
+      ],
+    );
+  }
+}
+
+
