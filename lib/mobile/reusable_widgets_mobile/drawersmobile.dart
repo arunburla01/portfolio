@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:portfolio/mobile/components/tabsmobile.dart';
+import 'package:portfolio/mobile/reusable_widgets_mobile/tabsmobile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DrawersMobile extends StatelessWidget {
@@ -24,15 +24,15 @@ class DrawersMobile extends StatelessWidget {
               child: Image.asset("assets/cropped_circle_image.png"),
             ),
           ),
-          TabsMobile(text: "home"),
+          TabsMobile(text: "home",pushname: "/home",),
           SizedBox(height: 10),
-          TabsMobile(text: "blog"),
+          TabsMobile(text: "blog",pushname: "/blog",),
           SizedBox(height: 10),
-          TabsMobile(text: "Projects"),
+          TabsMobile(text: "Projects",pushname: "/projects",),
           SizedBox(height: 10),
-          TabsMobile(text: "Aboutme"),
+          TabsMobile(text: "Aboutme",pushname: "/aboutme",),
           SizedBox(height: 10),
-          TabsMobile(text: "Contactme"),
+          TabsMobile(text: "Contactme",pushname: "/contactme",),
           SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

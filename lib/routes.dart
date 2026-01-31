@@ -22,7 +22,7 @@ class Routes {
             },
           ),
         );
-      case "/contact":
+      case "/contactme":
         return MaterialPageRoute(
           builder: (_) => LayoutBuilder(
             builder: (context, constraints) {

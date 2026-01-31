@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TabsMobile extends StatelessWidget {
   final String text;
-  const TabsMobile({super.key, required this.text});
+  final String pushname;
+  const TabsMobile({super.key, required this.text, required this.pushname});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class TabsMobile extends StatelessWidget {
       minWidth: 200,
       color: Colors.black,
       onPressed: () {
-        Navigator.of(context).pushNamed("/contact");
+        Navigator.of(context).pushNamed(pushname);
       },
       child: Text(
         text,

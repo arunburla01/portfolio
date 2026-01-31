@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/components.dart';
-import 'package:portfolio/mobile/components/mobile_components.dart';
+import 'package:portfolio/common_reusable_widgets/sans.dart';
+import 'package:portfolio/common_reusable_widgets/sansbold.dart';
+import 'package:portfolio/common_reusable_widgets/tealcontainer.dart';
+import 'package:portfolio/common_reusable_widgets/textform.dart';
+import 'package:portfolio/mobile/reusable_widgets_mobile/drawersmobile.dart';
+import 'package:portfolio/common_reusable_widgets/animatedcard.dart';
 
 class LandingPagemobile extends StatefulWidget {
   const LandingPagemobile({super.key});
@@ -12,7 +16,6 @@ class LandingPagemobile extends StatefulWidget {
 class _LandingPagemobileState extends State<LandingPagemobile> {
   @override
   Widget build(BuildContext context) {
-    var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
