@@ -80,13 +80,13 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     ),
                     SizedBox(height: 15),
                     SansBold("Arun Kumar", 55),
-                    Sans("Flutter Developer", 30),
+                    Sans(title: "Flutter Developer",size:  30),
                     SizedBox(height: 15),
                     Row(
                       children: [
                         Icon(Icons.email),
                         SizedBox(width: 20),
-                        Sans("arunburla01@gmail.com", 15),
+                        Sans(title: "arunburla01@gmail.com",size:  15),
                       ],
                     ),
                     SizedBox(height: 10),
@@ -95,7 +95,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                       children: [
                         Icon(Icons.phone),
                         SizedBox(width: 20),
-                        Sans("8985088844", 15),
+                        Sans(title: "8985088844",size:  15),
                       ],
                     ),
                     SizedBox(height: 10),
@@ -103,7 +103,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                       children: [
                         Icon(Icons.location_city),
                         SizedBox(width: 20),
-                        Sans("Ongole, AP", 15),
+                        Sans(title: "Ongole, AP",size:  15),
                       ],
                     ),
                   ],
@@ -138,9 +138,9 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SansBold("Aboutme", 40),
-                    Sans("Hello im arun specilizd in  flutter development", 15),
-                    Sans("dfakfhdkfndfkjafhahkdskfdj", 15),
-                    Sans("the art security for Android, web, ios, desktop", 15),
+                    Sans(title: "Hello im arun specilizd in  flutter development", size:15),
+                    Sans(title: "dfakfhdkfndfkjafhahkdskfdj",size:  15),
+                    Sans(title: "the art security for Android, web, ios, desktop",size:  15),
                     SizedBox(height: 10),
                     Row(
                       children: [
@@ -153,7 +153,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                               width: 2,
                             ),
                           ),
-                          child: Sans("flutter", 15),
+                          child: Sans(title: "flutter",size:  15),
                         ),
                         SizedBox(width: 10),
                         Container(
@@ -165,7 +165,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                               width: 2,
                             ),
                           ),
-                          child: Sans("firebase", 15),
+                          child: Sans(title: "firebase",size:  15),
                         ),
                         SizedBox(width: 10),
                         Container(
@@ -177,7 +177,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                               width: 2,
                             ),
                           ),
-                          child: Sans("node", 15),
+                          child: Sans(title: "node",size:  15),
                         ),
                         SizedBox(width: 10),
                         Container(
@@ -189,7 +189,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                               width: 2,
                             ),
                           ),
-                          child: Sans("Dart", 15),
+                          child: Sans(title: "Dart",size:  15),
                         ),
                       ],
                     ),

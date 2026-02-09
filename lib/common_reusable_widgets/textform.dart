@@ -23,7 +23,7 @@ class TextForm extends StatelessWidget {
       //Column --> Sans,Sizedbox,Sizedbox
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Sans(text, 16),
+        Sans(title: text,size: 16,),
         SizedBox(height: 5),
         SizedBox(
           //SizedBox --> TextformField

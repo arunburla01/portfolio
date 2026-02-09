@@ -71,7 +71,7 @@ class _AnimatedCardState extends State<AnimatedCard>
                 fit: widget.fit,
               ),
               SizedBox(height: 10),
-              Sans(widget.title, 15),
+              Sans( title: widget.title, size: 15,),
             ],
           ),
         ),

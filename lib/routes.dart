@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/mobile/aboutme_mobile.dart';
 
 import 'package:portfolio/mobile/contact_mobile.dart';
 import 'package:portfolio/mobile/landing_pagemobile.dart';
+import 'package:portfolio/web/aboutmeweb.dart';
 import 'package:portfolio/web/contact_web.dart';
 import 'package:portfolio/web/landing_page_web.dart';
 
@@ -30,6 +32,18 @@ class Routes {
                 return ContactWeb();
               } else {
                 return ContactMobile();
+              }
+            },
+          ),
+        );
+        case "/aboutme":
+        return MaterialPageRoute(
+          builder: (_) => LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth > 800) {
+                return Aboutmeweb();
+              } else {
+                return AboutmeMobile();
               }
             },
           ),

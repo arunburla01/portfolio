@@ -86,9 +86,9 @@ class _LandingPagemobileState extends State<LandingPagemobile> {
                     direction: Axis.vertical,
                     spacing: 9.0,
                     children: [
-                      Sans("arunburla01@gmail.com", 15),
-                      Sans("+91 8985088844", 15),
-                      Sans("Ongole, Prakasam", 15),
+                      Sans(title: "arunburla01@gmail.com", size:15),
+                      Sans(title: "+91 8985088844",size:  15),
+                      Sans(title: "Ongole, Prakasam", size: 15,),
                     ],
                   ),
                 ],
@@ -101,9 +101,9 @@ class _LandingPagemobileState extends State<LandingPagemobile> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SansBold("Aboutme", 35.0),
-                    Sans(
+                    Sans(title: 
                       "I’m a passionate Flutter developer focused on building clean, fast, and user-friendly mobile applications. I enjoy turning ideas into smooth, functional apps with beautiful UI and solid performance. ",
-                      15.0,
+                      size:15.0,
                     ),
                     Wrap(
                       spacing: 7.0,
